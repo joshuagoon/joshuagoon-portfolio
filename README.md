@@ -9,4 +9,4 @@ This portfolio consists of
 
 - WEB1201 is a website an educational website made to promote mental health awareness. It incorporates the use of HTML, CSS elements and JavaScript. Run home.html to start at the home page of the website.
 
-- PRG2104 is a simple game of tic-tac-toe with a user interface using Scala.
+- PRG2104 is a simple game of tic-tac-toe with a user interface using Scala. Run game.scala to run the game.
