@@ -1,0 +1,26 @@
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  bad constant pool index: 0 at pos: 788[0m
+[0m[[0m[31merror[0m] [0m[0m     while compiling: C:\Users\Joshua Goon\OneDrive\Documents\GitHub\finalprojectv2-joshuagoon\src\main\scala\tictactoe\game.scala[0m
+[0m[[0m[31merror[0m] [0m[0m        during phase: globalPhase=typer, enteringPhase=parser[0m
+[0m[[0m[31merror[0m] [0m[0m     library version: version 2.12.14[0m
+[0m[[0m[31merror[0m] [0m[0m    compiler version: version 2.12.14[0m
+[0m[[0m[31merror[0m] [0m[0m  reconstructed args: -bootclasspath C:\Program Files\Java\jdk-1.8\jre\lib\resources.jar;C:\Program Files\Java\jdk-1.8\jre\lib\rt.jar;C:\Program Files\Java\jdk-1.8\jre\lib\jsse.jar;C:\Program Files\Java\jdk-1.8\jre\lib\jce.jar;C:\Program Files\Java\jdk-1.8\jre\lib\charsets.jar;C:\Program Files\Java\jdk-1.8\jre\lib\jfr.jar;C:\Program Files\Java\jdk-1.8\jre\classes;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.12.14\scala-library-2.12.14.jar -classpath C:\Users\Joshua Goon\OneDrive\Documents\GitHub\finalprojectv2-joshuagoon\target\scala-2.12\classes;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scalafx\scalafx_2.12\22.0.0-R33\scalafx_2.12-22.0.0-R33.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-reflect\2.12.14\scala-reflect-2.12.14.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-base\22\javafx-base-22.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-controls\22\javafx-controls-22.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-fxml\22\javafx-fxml-22.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-graphics\22\javafx-graphics-22.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-media\22\javafx-media-22.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-swing\22\javafx-swing-22.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-web\22\javafx-web-22.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-base\22\javafx-base-22-win.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-controls\22\javafx-controls-22-win.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-fxml\22\javafx-fxml-22-win.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-graphics\22\javafx-graphics-22-win.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-media\22\javafx-media-22-win.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-swing\22\javafx-swing-22-win.jar;C:\Users\Joshua Goon\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-web\22\javafx-web-22-win.jar[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m  last tree to typer: Ident(loader)[0m
+[0m[[0m[31merror[0m] [0m[0m       tree position: line 22 of C:\Users\Joshua Goon\OneDrive\Documents\GitHub\finalprojectv2-joshuagoon\src\main\scala\tictactoe\game.scala[0m
+[0m[[0m[31merror[0m] [0m[0m            tree tpe: loader.type[0m
+[0m[[0m[31merror[0m] [0m[0m              symbol: value loader[0m
+[0m[[0m[31merror[0m] [0m[0m   symbol definition: val loader: javafx.fxml.FXMLLoader (a TermSymbol)[0m
+[0m[[0m[31merror[0m] [0m[0m      symbol package: tictactoe[0m
+[0m[[0m[31merror[0m] [0m[0m       symbol owners: value loader -> method loadScene -> trait BaseController[0m
+[0m[[0m[31merror[0m] [0m[0m           call site: method loadScene in trait BaseController in package tictactoe[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m== Source file context for tree position ==[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m    19 [0m
+[0m[[0m[31merror[0m] [0m[0m    20   def loadScene(fxml: String): Unit = {[0m
+[0m[[0m[31merror[0m] [0m[0m    21     val loader = new FXMLLoader(getClass.getResource(fxml))[0m
+[0m[[0m[31merror[0m] [0m[0m    22     val root = loader.load().asInstanceOf[javafx.scene.Parent][0m
+[0m[[0m[31merror[0m] [0m[0m    23     stage.setScene(new Scene(root))[0m
+[0m[[0m[31merror[0m] [0m[0m    24     loader.getController[BaseController].setStage(stage)[0m
+[0m[[0m[31merror[0m] [0m[0m    25   }[0m
