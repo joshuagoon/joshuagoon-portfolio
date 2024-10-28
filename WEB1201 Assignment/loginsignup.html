@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="widht=device-width, initial-scale=1.0">
+        <title>MentalCaring - Login & Sign Up</title>
+        <link rel="icon" href="logo.png" type="image/x-icon">
+    </head>
+
+    <style>
+        *{
+            font-family:'Times New Roman', Times, serif;
+        }
+
+        .nav{
+            overflow: hidden;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        .nav a{
+            float: right;
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 17px;
+            text-shadow: #A58BD1 90px;
+            font: bolder;
+        }
+
+        .nav a:hover{
+            color: #ACBE27;
+            border-bottom: solid #ACBE27;
+            border-width: 5px;
+        }
+
+        .nav a.active{
+            margin: 15px;
+            font-size: 27px;
+            color: white;
+        }
+
+        .nav .icon{
+            display: none;
+        }
+
+        .logo{
+            float: left;
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul{
+            float: right;
+            list-style: none;
+            padding: 0 50px 0 0;
+        }
+
+        ul li{
+            display: inline-block;
+        }
+
+        ul li a{
+            float: right;
+            justify-content: space-around;
+            text-decoration: none;
+            transition: all .3s ease;
+        }
+
+        ul li a:hover, ul li a.active{
+            color: #FFF;
+        }
+
+        #icon{
+            position: absolute;
+            right: 2%;
+            margin: 15px;
+            padding: 5px 7px 3px 7px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        #icon svg{
+            margin: 15px;
+            color: #FFF;
+            height: 28px;
+            transition: all .3s ease;
+        }
+
+        #icon:hover{
+            color: #ACBE27;
+        }
+
+        #checkbox, #icon{
+            display: none;
+        }
+
+        @media screen and (max-width: 768px){
+            ul{
+                position: fixed;
+                width: 100%;
+                height: calc(100vh);
+                background-color: #2A2CA2;
+                top: 10px;
+                left: 0;
+                text-align: center;
+                display: none;
+                margin-top: 60px;
+                flex-direction: row;
+            }
+
+            ul li{
+                display: flex;
+                flex-direction: row;
+                padding: 10px 0px 10px 10px;
+            }
+
+            ul li a{
+                display: block;
+                padding: 10px 0;
+            }
+
+            #icon{
+                margin: 0px 20px 0px 0px;
+                padding: 10px;
+                float: right;
+                display: block;
+            }
+
+            #checkbox:checked~ul{
+                display: block;
+            }
+        }
+
+        .bottom{
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            width: 100%;
+            height: 5%;
+            background-color: antiquewhite;
+            margin: 0%;
+            padding: 0%;
+            text-align: center;
+        }
+
+        .bottom p{
+            font-size: 15px;
+            color: #9966F1;
+        }
+
+        body{
+            z-index: -1;
+            background-color: rgb(128, 240, 173);
+            border-image: fill 0 linear-gradient(#0003, #000);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0%;
+            padding: 0%;
+        }
+
+        .container{
+            z-index: -1;
+            overflow: hidden;
+            display: flex;
+            position: absolute;
+            flex-direction: column;
+            background-color: rgb(158, 137, 137);
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            place-items: center;
+            padding: 5px;
+            background-image: url("Images/bg3.jpg");
+            border-image: fill 1 linear-gradient(#0003, rgb(12, 47, 61));
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        ::selection{
+            background: #1A75FF;
+            color: #FFF;
+        }
+
+        .wrapper{
+            z-index: -1;
+            margin-top: 120px;
+            overflow: hidden;
+            max-width: 390px;
+            background: hsla(0, 0%, 100%, 0.5);
+            backdrop-filter: blur(10px);
+            box-shadow: #000 10px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .wrapper .title-text{
+            display: flex;
+            width: 200%;
+        }
+
+        .wrapper .title{
+            width: 50%;
+            font-size: 35px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .wrapper .slide-controls{
+            position: relative;
+            display: flex;
+            height: 50px;
+            width: 100%;
+            overflow: hidden;
+            margin: 30px 0px 10px 0px;
+            justify-content: space-between;
+            background: hsla(0, 0%, 100%, 0.3);
+            border-radius: 15px;
+        }
+
+        .slide-controls .slide{
+            height: 100%;
+            width: 100%;
+            color: #FFF;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 48px;
+            cursor: pointer;
+            z-index: 1;
+            transition: all 0.6s ease;
+        }
+
+        .slide-controls label.signup{
+            color: #000;
+        }
+
+        .slide-controls .slider-tab{
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            left: 0;
+            z-index: 0;
+            border-radius: 15px;
+            background: rgb(42, 44, 162);
+            color: white;
+            font-weight: bolder;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        input[type="radio"]{
+            display: none;
+        }
+
+        #signup:checked ~ .slider-tab{
+            left: 50%;
+        }
+
+        #signup:checked ~ label.signup{
+            color: white;
+            font-weight: bolder;
+            cursor: default;
+            user-select: none;
+        }
+
+        #signup:checked ~ label.login{
+            color: #000;
+        }
+
+        #login:checked ~ label.signup{
+            color: #000;
+        }
+
+        #login:checked ~ label.login{
+            cursor: default;
+            user-select: none;
+        }
+
+        .wrapper .form-container{
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .form-container .form-inner{
+            display: flex;
+            width: 200%;
+        }
+
+        .form-container .form-inner form{
+            width: 50%;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .form-inner form .field{
+            height: 50px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .form-inner form .field input{
+            height: 100%;
+            width: 95%;
+            outline: none;
+            padding-left: 15px;
+            border-radius: 15px;
+            border: 1px solid lightgrey;
+            border-bottom-width: 2px;
+            font-size: 17px;
+            transition: all 0.3s ease;
+        }
+
+        .form-inner form .field input:focus{
+            border-color: #2A2CA2;
+        }
+
+        .form-inner form .field input::placeholder{
+            color: #2A2CA2;
+            transition: all 0.3s ease;
+        }
+
+        form.field input:focus::placeholder{
+            color: #2A2CA2;
+        }
+
+        .form-inner form .pass-link{
+            margin: 16px;
+            margin-bottom: 25px;
+        }
+
+        .form-inner form .signup-link{
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .form-inner form .pass-link a, .form-inner form .signup-link a{
+            color: #2A2CA2;
+            text-decoration: none;
+        }
+
+        .form-inner form .pass-link a:hover, .form-inner form .signup-link a:hover{
+            text-decoration: underline;
+        }
+
+        form .btn{
+            height: 50px;
+            width: 100%;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        form .btn .btn-layer{
+            height: 100%;
+            width: 300%;
+            position: absolute;
+            left: -100%;
+            background: #2A2CA2;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+        }
+
+        .confirmlogin{
+            position: relative;
+            padding: 15px 45% 20px 45%;
+            margin: 20px 0px 20px 0px;
+            text-decoration-line: none;
+            border-radius: 15px;
+            background-color: #2A2CA2;
+            color: #FFF;
+        }
+
+        .popup-btn{
+            position: relative;
+            width: 100%;
+            height: 50px;
+            border-radius: 15px;
+            background-color: #2A2CA2;
+            color: #FFF;
+        }
+
+        .pop-up, .pop-up1{
+            width: 200px;
+            height: 120px;
+            background-color: rgb(38, 38, 38);
+            color: white;
+            border: 1px solid rgb(61, 61, 61);
+            border-radius: 5px;
+            margin: auto;
+            display: none;
+            position: fixed;
+            top: 20px;
+            z-index: 6;
+            padding: 0%;
+            text-align: center;
+            align-self: center;
+        }
+
+        h3.general-content{
+            font-size: 14px;
+            font-weight: normal;
+            position: absolute;
+            margin: 20px 20px 0px 20px;
+            left: 0%;
+            right: 0%;
+            align-self: center;
+            text-align: center;
+        }
+
+        .ok-btn{
+            color: black;
+            font-size: 14px;
+            background-color: gray;
+            border: 3px double black;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+            text-decoration-line: none;
+            position: relative;
+            top: 5px;
+            left: 170px;
+            padding: 1px 6px 1px 6px;
+        }
+    </style>
+
+    <body>
+        <div class="pop-up">
+            <div class="pop-up-content">
+                <a class="ok-btn" role="button" href="loginsignup.html">&times</a>
+                <h3 class="general-content">Thank you for Signing Up!</h3>
+            </div>
+        </div>
+
+        <div class="nav">
+            <div class="logo">
+                <a href="home.html" class="active">MentalCaring</a>
+            </div>
+            <input type="checkbox" id="checkbox">
+            <label for="checkbox" id="icon">
+                <svg style="fill: white" viewBox="0 0 50 50" width="40" height="16">
+                    <rect y="5" width="50" height="5"></rect>
+                    <rect y="25" width="50" height="5"></rect>
+                    <rect y="45" width="50" height="5"></rect>
+                </svg>
+            </label>
+
+            <ul>
+                <li><a href="home.html" id="Home">Home</a></li>
+                <li><a href="services.html">Conditions & Services</a></li>
+                <li><a href="loginsignup.html" id="Login">Login</a></li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <div class="wrapper">
+                <div class="title-text">
+                    <div class="title login">Login Form</div>
+                    <div class="title signup">Signup Form</div>
+                </div>
+                <div class="form-container">
+                    <div class="slide-controls">
+                        <input type="radio" name="slide" id="login" checked>
+                        <input type="radio" name="slide" id="signup">
+                        <label for="login" class="slide login">Login</label>
+                        <label for="signup" class="slide signup">Signup</label>
+                        <div class="slider-tab"></div>
+                    </div>
+                    <div class="form-inner">
+                        <form action="#" class="login">
+                            <div class="field">
+                                <input type="text" placeholder="Email Address" required>
+                            </div>
+                            <div class="field">
+                                <input type="password" placeholder="Password" required>
+                            </div>
+                            <div class="pass-link"><a href="#">Forgot password?</a></div>
+                            <a class="confirmlogin" role="button">Login</a>
+                        </form>
+
+                        <form action="#" class="signup">
+                            <div class="field">
+                                <input type="text" placeholder="Email Address" required>
+                            </div>
+                            <div class="field">
+                                <input type="password" placeholder="Password" required>
+                            </div>
+                            <div class="field">
+                                <input type="password" placeholder="Confirm password" required>
+                            </div>
+                            <button class="popup-btn" style="margin-top: 25px;" type="submit" id="submitButton">Signup</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="cusloginpg.js"></script>
+    </body>
+</html>

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <title>MentalCaring - Conditions & Services</title>
+        <link rel="icon" href="logo.png" type="image/x-icon">
+    </head>
+
+    <style>
+        .bodycon{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .nav{
+            overflow: hidden;
+            background-color:hsla(169, 15%, 15%, 0.829);
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+        }
+
+        .nav a{
+            float: right;
+            color: #FFFFFF;
+            padding: 10px;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 17px;
+            text-shadow: #A58BD1 90px;
+            font: bolder;
+        }
+
+        .nav a:hover{
+            color: #E2FF05;
+            text-shadow: #6F1CFF 10px 0px 20px;
+            border-bottom: solid #ACBE27;
+            border-width: 5px;
+        }
+
+        .nav a.active{
+            margin: 15px;
+            font-size: 27px;
+            color: white;
+        }
+
+        .nav .icon{
+            display: none
+        }
+
+        .logo{
+            float: left;
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul{
+            float: right;
+            list-style: none;
+            padding: 0px 50px 0px 0px;
+        }
+
+        ul li {
+            display: inline-block;
+        }
+
+        ul li a {
+            float: right;
+            justify-content: space-around;
+            text-decoration: none;
+            transition: all .3s ease;
+        }
+
+        ul li a:hover, ul li a.active{
+            color: #FFFFFF;
+        }
+
+        #icon{
+            position: absolute;
+            right: 2%;
+            margin: 15px;
+            padding: 5px 7px 3px 7px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        #icon svg{
+            margin: 15px;
+            color: #FFFFFF;
+            height: 28px;
+            transition: all .3s ease;
+        }
+
+        #icon:hover{
+            color: #ACBE27;
+        }
+
+        #checkbox,
+        #icon{
+            display: none;
+        }
+
+        @media screen and (max-width: 768px){
+            ul{
+                position: fixed;
+                width: 100%;
+                height: calc(100vh);
+                background-color: #2A1F4C;
+                top: 10px;
+                left: 0px;
+                text-align: center;
+                display: none;
+                margin-top: 60px;
+                flex-direction: row;
+            }
+
+            ul li{
+                display: flex;
+                flex-direction: row;
+                padding: 10px 0px 10px 10px;
+            }
+
+            ul li a{
+                display: block;
+                padding: 10px 0;
+            }
+
+            #icon{
+                margin: 0px 20px 0px 0px;
+                padding: 10px;
+                float: right;
+                display: block;
+            }
+
+            #checkbox:checked~ul{
+                display: block;
+            }
+        }
+
+        .bottom{
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            width: 100%;
+            height: 5%;
+            background-color: antiquewhite;
+            margin: 0%;
+            padding: 0%;
+            text-align: center;
+        }
+
+        .bottom p{
+            font-size: 15px;
+            color: #9966F1;
+        }
+
+        body{
+            z-index: -1;
+            border-image: fill 0 linear-gradient(#0003, #000);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 0%;
+            padding: 0%;
+        }
+
+        .container{
+            position: relative;
+            z-index: -1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+
+        input:focus{
+            border-color: rgb(242, 112, 20);
+            color: rgb(242, 112, 20);
+        }
+
+        .wrapper{
+            z-index: -1;
+            margin: 50px 50px 50px 50px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            text-align: center;
+            background: hsla(0, 0%, 100%, 0.5);
+            backdrop-filter: blur(10px);
+            box-shadow: #000 10px;
+            border-radius: 15px;
+            box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        *{
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .titlelogin{
+            margin: 0px 0px 20px 5px;
+            color: rgb(255, 230, 42);
+        }
+
+        .titlelogin h1{
+            font-weight: bolder;
+            font-size: 30px;
+        }
+
+        .titlelogin h3{
+            font-weight: lighter;
+            font-family: 'Trebuchet MS', 'Lucida Sand Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+        }
+
+        input{
+            width: 70%;
+            padding: 10px;
+            margin: 0px 0px 5px 0px;
+            border-width: 3px;
+            border-radius: 10px;
+            border: #2A1F4C;
+        }
+
+        button{
+            font-weight: bolder;
+            font-size: large;
+            margin: 0px 0px 20px 5px;
+            padding: 10px 60px 10px 60px;
+            border-radius: 10px;
+            background-color: #035042;
+            color: #FFFFFF;
+        }
+
+        button:hover{
+            background-color: #5121A5;
+            color: #B3FF00;
+        }
+
+        .c1{
+            position: absolute;
+            top: 15%;
+            bottom: 15%;
+            margin: 20px 50px 50px 50px;
+            background-color: transparent;
+            height: 60%;
+            transition: 0.3s ease-in-out;
+        }
+
+        .cl h1{
+            background-color: transparent;
+            max-width: 300px;
+            font-family: 'Insomnia', 'sans-serif';
+            font-family: Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+            color: rgb(251, 249, 239);
+            font-size: 50px;
+            font-weight: 300px;
+            margin: 10px;
+        }
+
+        .c1 h3{
+            background-color: transparent;
+            max-width: 300px;
+            color: #6F1CFF;
+            font-size: 32px;
+            font: bold;
+            margin: 10px;
+        }
+
+        .c1 p{
+            background-color: transparent;
+            width: 45%;
+            color: #959595;
+            margin: 1.5% 0px 35px 0px;
+            margin: 10px;
+            margin-bottom: 30px;
+        }
+
+        .img1{
+            z-index: -1;
+            filter: brightness(80%);
+            filter: opacity(70%);
+            position: inherit;
+            padding: 52px 0px 0px 500px;
+            transition: all .3s ease;
+        }
+
+        .btn{
+            margin: 10px;
+            background-color: transparent;
+            white-space: nowrap;
+            max-width: 50%;
+        }
+
+        .both{
+            font-style: none;
+            color: #5121A5;
+            font-family: 'Times New Roman', Times, serif;
+            width: 150px;
+            padding: 15px;
+            font-size: 20px;
+            letter-spacing: 2px;
+            font-weight: bolder;
+            text-decoration-line: none;
+            border-radius: 10px;
+            margin-right: 30px;
+            outline: none;
+            border: 3px;
+            transition: all ease 0.5s;
+        }
+
+        .container4{
+            margin: 120px 70px 90px 70px;
+            filter: drop-shadow(0px 0px 10px);
+            border-radius: 20px;
+            padding: 36px 36px 0px 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            resize: horizontal;
+            backdrop-filter: blur(8px);
+            background-color: hsl(0, 0%, 0%, 0.5);
+        }
+
+        .box{
+            margin: 70px 70px 100px 70px;
+            filter: drop-shadow(0px 0px 10px);
+            border-radius: 20px;
+            padding: 36px 36px 0px 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            resize: horizontal;
+            backdrop-filter: blur(8px);
+            background-color: hsl(0, 0%, 0%, 0.5);
+        }
+
+        .blog-card{
+            max-width: 780px;
+            min-height: 250px;
+            background-color: var(--bg);
+            border-radius: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .blog-image{
+            flex: 1 0 240px;
+            min-height: 100%;
+            max-height: 350px;
+            overflow: hidden;
+        }
+
+        .container4 img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cardcontent{
+            text-align: center;
+            flex: 3 1 400px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .con2 img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .blog-content{
+            text-align: center;
+            flex: 3 1 400px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #cards{
+            background-color: white;
+            justify-content: center;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .bcard{
+            max-width: 780px;
+            min-height: 250px;
+            border-radius: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .bimage{
+            flex: 1 0 240px;
+            max-height: 150px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .card img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bcontent{
+            text-align: center;
+            flex: 3 1 400px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card p{
+            font-size: 15px;
+            width: max-content;
+            text-align: center;
+            align-self: center;
+            margin: 0%;
+        }
+
+        .conditionscontext{
+            max-width: 100%;
+            color: #FFFFFF;
+            margin: 50px 50px 50px 50px;
+        }
+
+        .conditionscontext p{
+            padding: 0%;
+            margin: 0%;
+            color: #000000;
+        }
+
+        .conditionscontext h1{
+            font-size: 55px;
+            padding: 0%;
+            margin: 0%
+        }
+
+        #service h1{
+            color: #000;
+        }
+
+        .pop-up, .pop-up1{
+            width: 200px;
+            height: 120px;
+            background-color: rgb(38, 38, 38);
+            color: white;
+            border: 1px solid rgb(61, 61, 61);
+            border-radius: 5px;
+            margin: auto;
+            display: none;
+            position: fixed;
+            top: 20px;
+            z-index: 6;
+            padding: 0%;
+            text-align: center;
+            align-self: center;
+        }
+
+        .container3{
+            background-image: url("Images/bg2.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #3F2E79;
+            position: relative;
+            z-index: -1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 100px;
+            width: 100%;
+            align-items: center;
+        }
+
+        #service p{
+            color: #3C4043;
+        }
+
+        .container2{
+            background-image: linear-gradient(black, #5121A5);
+            color: #5121A5;
+            position: relative;
+            z-index: -1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px 50px 80px 0px;
+            color: #5121A5;
+            background-image: url(Images/bg3.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #cards{
+            background-color: transparent;
+            justify-content: center;
+            align-self: center;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .card{
+            max-width: 200px;
+            max-height: 250px;
+            box-shadow: #000 10px;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            resize: horizontal;
+            backdrop-filter: blur(8px);
+            background-color: hsla(0, 0%, 100%, 0.9);
+            margin: 20px;
+        }
+
+        .bcard{
+            max-width: 780px;
+            min-height: 250px;
+            background-color: #EBE9E9;
+            border-radius: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .bimage{
+            flex: 1 0 240px;
+            max-height: 150px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .card img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bcontent{
+            text-align: center;
+            flex: 3 1 400px;
+            padding: 20px;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card p{
+            font-size: 15px;
+            width: max-content;
+            text-align: center;
+            align-self: center;
+            margin: 0%
+        }
+
+        .container2 button{
+            font-size: 15px;
+            background-color: #5121A5;
+            border: 0px;
+            border-radius: 20px 10px 20px 10px;
+            color: #B3FF00;
+            margin: 0%;
+            padding: 10px;
+        }
+
+        .container2 button:hover{
+            border: solid 2px #5121A5;
+            background-color: transparent;
+            color: #5121A5;
+        }
+
+        .container3 button{
+            font-size: 15px;
+            background-color: #5121A5;
+            border: 0px;
+            border-radius: 20px 10px 20px 10px;
+            color: #F7F7F7;
+            margin: 0%;
+            padding: 10px;
+        }
+
+        .container3 button:hover{
+            border: solid 2px #5121A5;
+            background-color: transparent;
+            color: #5121A5;
+        }
+
+        .servicescontext{
+            max-width: 100%;
+            color: #FFFFFF;
+            margin: 50px 50px 50px 50px;
+        }
+
+        .servicescontext p{
+            padding: 0%;
+            margin: 0%;
+            color: #3C4043;
+        }
+
+        .servicescontext h1{
+            font-size: 55px;
+            padding: 0%;
+            margin: 0%;
+        }
+
+        #anxiety{
+            margin-top: 607px;
+        }
+
+        .morebutton{
+            color: black;
+            font-size: 14px;
+            background-color: transparent;
+            border: 3px ridge #000000;
+            padding: 20px 40px 20px 40px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #5121A5;
+            font-size: 20px;
+        }
+
+        .morebutton button:hover{
+            color: red;
+            filter: drop-shadow(10px #B3FF00);
+        }
+    </style>
+
+    <body>
+        <div class="pop-up">
+            <div class="pop-up-content">
+                <a class="ok-btn" role="button" href="home.html">&times</a>
+            </div>
+        </div>
+
+        <div class="nav">
+            <div class="logo">
+                <a href="home.html" class="active">MentalCaring</a>
+            </div>
+            <input type="checkbox" id="checkbox">
+            <label for="checkbox" id="icon">
+                <svg style="fill: white" viewBox="0 0 50 50" width="40" height="16">
+                    <rect y="5" width="50" height="5"></rect>
+                    <rect y="25" width="50" height="5"></rect>
+                    <rect y="45" width="50" height="5"></rect>
+                </svg>
+            </label>
+            <ul>
+                <li><a href="home.html" id="Home">Home</a></li>
+                <li><a href="services.html">Conditions & Services</a></li>
+                <li><a href="loginsignup.html" id="Login">Login</a></li>
+            </ul>
+        </div>
+
+        <div class="bodycon">
+            <div class="container2" id="cards">
+                <div class="conditionscontext">
+                    <h1>Types of Mental Health Conditions</h1><br>
+                    <p>Understanding mental health conditions helps break stigma, promotes empathy, and encourages early intervention. Learning about symptoms, causes, and treatment options empowers individuals to support themselves and others.</p>
+                </div>
+                <div class="card">
+                    <div class="bcard">
+                        <div class="bimage">
+                            <img src="Images/anxiety.png">
+                        </div>
+                        <div class="bcontent">
+                            <p>Anxiety</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bcard">
+                        <div class="bimage">
+                            <img src="Images/depression.png">
+                        </div>
+                        <div class="bcontent">
+                            <p>Depression</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bcard">
+                        <div class="bimage">
+                            <img src="Images/bipolar.png">
+                        </div>
+                        <div class="bcontent">
+                            <p>Bipolar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bcard">
+                        <div class="bimage">
+                            <img src="Images/ptsd.jpg">
+                        </div>
+                        <div class="bcontent">
+                            <p>PTSD</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="conditionscontext">
+                    <a class="morebutton" role="button" href="Services.html">Learn More</a>
+                </div>
+            </div>
+
+            <div class="container3" id="cards">
+                <div class="servicescontext" id="service">
+                    <h1>Services</h1><br>
+                    <p>We offer a range of mental health services to support your well-being, including counseling, therapy, mental health assessments, and wellness programs. Whether you need individual support, group sessions, or resources for self-care, our goal is to provide compassionate care tailored to your needs. We're here to help you navigate challenges, build resilience, and promote lasting emotional health.</p>
+                </div>
+                <div class="card">
+                    <div class="bcard">
+                        <div class="bimage">
+                            <img src="Images/trp.jpg">
+                        </div>
+                        <div class="bcontent">
+                            <p>Therapist 1</p>
+                            <button id="bbutton">Book an appointment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bcard">
+                        <div class="bimage">
+                            <img src="Images/trp.jpg">
+                        </div>
+                        <div class="bcontent">
+                            <p>Therapist 2</p>
+                            <button id="bbutton">Book an appointment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bcard">
+                        <div class="bimage">
+                            <img src="Images/trp.jpg">
+                        </div>
+                        <div class="bcontent">
+                            <p>Therapist 3</p>
+                            <button id="bbutton">Book an appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
